@@ -1,4 +1,6 @@
 02:34:53 hamim@hamim-zorin Security_Lab → openssl enc -aes-128-cbc -e -in test.txt -out cipher1_aes-128-cbc.bin -K 00112233445566778889aabbccddeeff -iv 0102030405060708
-hex string is too short, padding with zero bytes to length
 02:35:36 hamim@hamim-zorin Security_Lab → openssl enc -aes-128-cfb -e -in test.txt -out cipher2_aes-128-cfb.bin -K 00112233445566778889aabbccddeeff -iv 0102030405060708
 02:36:56 hamim@hamim-zorin Security_Lab → openssl enc -bf-cbc -in test.txt -out cipher3_bf-cbc.bin -K 00112233445566778889aabbccddeeff -iv 0102030405060708
+02:41:56 hamim@hamim-zorin Security_Lab → openssl enc -aes-128-cbc -d -in cipher1_aes-128-cbc.bin -out decrypted1.txt -K 00112233445566778889aabbccddeeff -iv 0102030405060708
+02:43:02 hamim@hamim-zorin Security_Lab → openssl enc -aes-128-cfb -d -in cipher2_aes-128-cfb.bin -out decrypted2.txt -K 00112233445566778889aabbccddeeff -iv 0102030405060708
+02:43:31 hamim@hamim-zorin Security_Lab → openssl enc -bf-cbc -d -in cipher3_bf-cbc.bin -out decrypted3.txt -K 00112233445566778889aabbccddeeff -iv 0102030405060708
