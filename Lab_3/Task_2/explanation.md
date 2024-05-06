@@ -1,0 +1,2 @@
+### So after encrypting the original.bmp with ecb and cbc encryption method, i got two .bmp files. But since they are fully encrypted the first 54 bytes which is header information for .bmp file are also encrypted. So I replaced the first 54 bytes of the enceypted .bmp file from the original.bmp file and saved them as modified_encrypted file.
+### My observation for the modified .bmp file was I could not see the original picture after openning them. The files are uploaded also in the same folder.
