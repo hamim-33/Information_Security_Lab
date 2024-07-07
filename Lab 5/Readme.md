@@ -62,3 +62,6 @@ For me, I had to add 127.0.0.1 to gci.example.com
 ```bash
 sudo nano /etc/hosts
 ```
+The result is here
+![image](https://github.com/hamim-33/Information_Security_Lab/assets/102356771/02216d16-a01f-4f6e-9c90-bc03f57f7962)
+
