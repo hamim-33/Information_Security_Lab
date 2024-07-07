@@ -1,4 +1,5 @@
 # Securing Apache Web Server
+## Setting Up Apache Server
 At first we need to install apache web server in our machine using the following commands.
 ```bash
 sudo apt update
@@ -64,4 +65,61 @@ sudo nano /etc/hosts
 ```
 The result is here
 ![image](https://github.com/hamim-33/Information_Security_Lab/assets/102356771/02216d16-a01f-4f6e-9c90-bc03f57f7962)
+
+## Now Comes the part of Securing the Server.
+First, we need to generate a private key and a self-signed certificate using OpenSSL using the following command.
+```bash
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache.key -out /etc/ssl/certs/apache.crt
+```
+
+Once we complete providing the information, the openssl command should generate a private key and a certificate file in the following locations.
+```
+/etc/ssl/private/apache.key
+/etc/ssl/certs/apache.crt
+```
+Then Edit the config file.
+```bash
+sudo nano /etc/apache2/sites-available/gci.conf
+```
+And update with the following configuration.
+```
+<VirtualHost *:443>
+    ServerAdmin hamim@example.com
+    ServerName gci.example.com
+    DocumentRoot /var/www/gci
+
+    SSLEngine on
+    SSLCertificateFile    /etc/ssl/certs/apache.crt
+    SSLCertificateKeyFile /etc/ssl/private/apache.key
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+Enable the SSL module and the SSL site configuration and restart the apache server.
+```bash
+sudo a2enmod ssl
+sudo a2ensite gci.conf
+sudo systemctl restart apache2
+```
+Enable the firewall and allow traffic on ports 80 and 443.
+```bash
+sudo ufw enable
+sudo ufw allow 'Apache Full'
+sudo ufw allow 'ssh'
+```
+Check the firewall status to ensure the rules are applied correctly.
+```bash
+sudo ufw status
+```
+Then we can test the new configuratiob by visitng the secured site "https://gci.example.com". <br>
+Here, we see a warning because the certificate is self-signed, but we can proceed to verify the encryption.
+![image](https://github.com/hamim-33/Information_Security_Lab/assets/102356771/1ba86d6a-b176-4438-a27f-28d3309153b2)
+
+
+
+
+
+
+
 
