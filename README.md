@@ -18,3 +18,5 @@
 
 ## Lab 4 - [Link](./Lab%204)
 
+## Lab 5 - [Link](./Lab%205)
+
